@@ -1,0 +1,44 @@
+INSTALLATION STEPS:
+        
+        CONFIGURE THE UNIVERSAL REPO FOR JENKINS USING BELOW COMMAND:
+          1)	sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo  #universal repo
+        
+        REGISTER THE KEY
+          2)	sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+          
+        NOW USING YUM COMMAND INSTALL JENKINS
+          3)	yum install Jenkins
+          
+        NOW CHECK THE STATUS WHETHER IT IS RUNNING OR NOT:
+          /etc/init.d/jenkins status
+          
+          ● jenkins.service - LSB: Jenkins Automation Server
+            Loaded: loaded (/etc/rc.d/init.d/jenkins; bad; vendor preset: disabled)
+            Active: inactive (dead)
+            Docs: man:systemd-sysv-generator(8)
+        
+        THE STATUS OF JENKINS WOULD BE "INACTIVE" THUS IN-ORDER TO START USAGE OF JENKINS START THE PROCESS JENKINS.
+          
+          /etc/init.d/jenkins start
+          
+          Starting jenkins (via systemctl):                          [  OK  ]
+
+       NOW CHECK THE STATUS AGAIN IT WOULD SHOW RUNNING:
+          /etc/init.d/jenkins status
+        
+        ● jenkins.service - LSB: Jenkins Automation Server
+          Loaded: loaded (/etc/rc.d/init.d/jenkins; bad; vendor preset: disabled)
+          Active: active (running) since Tue 2017-10-17 18:26:18 UTC; 4s ago
+          Docs: man:systemd-sysv-generator(8)
+          Process: 24585 ExecStart=/etc/rc.d/init.d/jenkins start (code=exited, status=0/SUCCESS)
+          CGroup: /system.slice/jenkins.service
+                     └─24605 /etc/alternatives/java -Dcom.sun.akuma.Daemon=daemonized -Djava.awt.headless=true -DJENKINS_HOME=/var/lib/jen...
+
+        (machine_name) systemd[1]: Starting LSB: Jenkins Automation Server...
+        (machine_name) runuser[24586]: pam_unix(runuser:session): session opened for user jenkins...d=0)
+        (machine_name) runuser[24586]: pam_unix(runuser:session): session closed for user jenkins
+        (machine_name) jenkins[24585]: Starting Jenkins [  OK  ]
+        (machine_name) systemd[1]: Started LSB: Jenkins Automation Server.
+        Hint: Some lines were ellipsized, use -l to show in full.
+
+             
